@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Update Item:</h1>
+    <%if (locals.item){%>
+        <p>Item: <%= locals.item[0].item %> </p>
+        <p>Quantity: <%= locals.item[0].quantity %></p>
+        <p>Category: <%= locals.categories[locals.item[0].category_id - 1].category %></p>
+        <form action="/updateitem?q=<%=locals.itemId %>" method="POST">
+            <label for="item">Item:</label>
+            <input type="text" name="item" id="item" placeholder="item">
+            <label for="quantity">Quantity:</label>
+            <input type="text" name="quantity" id="quantity" placeholder="10">
+            <label for="category">Category:</label>
+            <select name="category" id="category">
+                <%if (locals.categories){%>
+                    <%for (let i = 0; i < locals.categories.length; i++){%>
+                        <option value="<%=locals.categories[i].category%>"><%=locals.categories[i].category%></option>
+                    <%}%>
+                <%}%>
+            </select>
+            <button type="submit">Update</button>
+        </form>
+    <%}%>
+    
+</body>
+</html>

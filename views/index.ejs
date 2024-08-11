@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <%let baseUrl = "/category?q=" %>
+    <%if (locals.categories){ %>
+      <%for (let i = 0; i < locals.categories.length; i++){ %>
+        <% let encodedText = encodeURIComponent(locals.categories[i].category); %>
+        <a href= <%=baseUrl + encodedText%>><%=locals.categories[i].category%></a>
+      <br>
+    <%} %>
+    <%}%>
+    <a href="/addcategory">Create Category</a>
+  </body>
+</html>

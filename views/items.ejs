@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1><%= title %></h1>
+    <% if (locals.items.length == 0){%>
+        <% console.log(locals.items) %>
+        <a href="/deletecategory?q=<%= locals.title%>">Delete Category <%= locals.title %></a>
+    <%}%>
+    <%for (let i = 0; i < locals.items.length; i++){%>
+        <p>Item: <%= locals.items[i].item%></p>
+        <p>Quantity: <%= locals.items[i].quantity%></p>
+        <a href="/updateitem?q=<%=locals.items[i].item_id%>"><button>Update</button></a>
+        <a href="/deleteitem?q=<%=locals.items[i].item_id%>"><button>Delete</button></a>
+        <br>
+    <%}%>
+    <a href="/additem">New Item</a>
+</body>
+</html>
